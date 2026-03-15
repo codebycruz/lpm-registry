@@ -6,7 +6,7 @@
 					"schemas": [
 						{
 							"fileMatch": ["packages/*.json"],
-							"url": "./registry.schema.json",
+							"url": "./schemas/registry.schema.json",
 						},
 					],
 				},

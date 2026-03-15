@@ -1,0 +1,15 @@
+{
+	"name": "generator",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"generate": "bun ./src/index.ts"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}
