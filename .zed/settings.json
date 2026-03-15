@@ -1,0 +1,16 @@
+{
+	"lsp": {
+		"json-language-server": {
+			"settings": {
+				"json": {
+					"schemas": [
+						{
+							"fileMatch": ["packages/*.json"],
+							"url": "./registry.schema.json",
+						},
+					],
+				},
+			},
+		},
+	},
+}
