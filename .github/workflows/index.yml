@@ -5,6 +5,7 @@ on:
         branches: [master]
         paths:
             - "packages/**"
+    workflow_dispatch:
 
 jobs:
     generate:
