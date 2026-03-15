@@ -1,0 +1,12 @@
+{
+	"name": "cowsay",
+	"description": "A cow that says things",
+	"authors": [
+		"David Cruz <codebycruz@gmail.com>"
+	],
+	"git": "git@github.com:codebycruz/cowsay.git",
+	"branch": "master",
+	"versions": {
+		"0.1.0": "d8a5f0a74a90f3dc20f907d18dc13ec8dc57cd9a"
+	}
+}
