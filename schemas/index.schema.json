@@ -21,6 +21,10 @@
 			"git": {
 				"type": "string",
 				"format": "uri"
+			},
+			"lastUpdated": {
+				"type": ["string", "null"],
+				"format": "date-time"
 			}
 		},
 		"additionalProperties": false

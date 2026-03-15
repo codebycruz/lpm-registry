@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { $ } from "bun";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -22,23 +23,31 @@ interface IndexEntry {
 	authors: string[];
 	latest: string | null;
 	git: string;
+	lastUpdated: string | null;
 }
 
-const index: IndexEntry[] = readdirSync(packagesDir)
-	.filter((f) => f.endsWith(".json"))
-	.map((f) => {
-		const pkg: Package = JSON.parse(
-			readFileSync(join(packagesDir, f), "utf8"),
-		);
+const files = readdirSync(packagesDir).filter((f) => f.endsWith(".json"));
+
+const index: IndexEntry[] = await Promise.all(
+	files.map(async (f) => {
+		const filePath = join(packagesDir, f);
+		const pkg: Package = JSON.parse(readFileSync(filePath, "utf8"));
+
 		const versions = Object.keys(pkg.versions ?? {});
+		const gitDate =
+			await $`git log -1 --format=%cI -- ${filePath}`.text();
+		const lastUpdated = gitDate.trim() || null;
+
 		return {
 			name: pkg.name,
 			description: pkg.description ?? null,
 			authors: pkg.authors ?? [],
 			latest: versions.at(-1) ?? null,
 			git: pkg.git,
+			lastUpdated,
 		};
-	});
+	}),
+);
 
 mkdirSync(outputDir, { recursive: true });
 writeFileSync(outputFile, JSON.stringify(index));
