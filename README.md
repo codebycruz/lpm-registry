@@ -1,14 +1,18 @@
-# lpm-registry
+# lde-org/registry
 
-This repository contains the registry for lpm. It simply contains JSON files describing each package with URLs to external sources to gather git repositories.
+This repository contains the registry for LDE.
 
-It takes the vcpkg/cargo route of being a simple registry/index stored on your machine. No pre-built executables or library source code will be distributed here.
+## How it works
+
+The registry is just an easily indexable list of JSON files describing information for a package, and where to get it from.
+
+No pre-built executables or library source code will be stored here.
 
 ## Contributing
 
-Currently, the registry is going to be a manual process of creation of JSON files.
+You can use `lde publish` which will create a pull request with the changes to add your package to the registry.
 
-In the future, this will be streamlined with `lpm publish` which should create the file for you and open a link for you to PR it. Or even better, API usage would be available to automate this process.
+But the process is still largely manual, in the future as demand increases it will be streamlined.
 
 ### Example
 
